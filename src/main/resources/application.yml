@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql:///workflow
+    password: root
+    username: root
+
+  mvc:
+    ## 解决swagger版本和springboot版本冲突的问题
+    pathmatch:
+      matching-strategy: ant_path_matcher
+logging:
+  level:
+    root:
+
+
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:mapper/*.xml

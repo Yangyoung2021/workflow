@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yang.workflow.mapper.ExamRelMemberMapper">
+
+
+    <resultMap type="com.yang.workflow.entity.ExamRelMember" id="ExamRelMemberMap">
+        <result property="relId" column="rel_id" jdbcType="VARCHAR"/>
+        <result property="staffCode" column="staff_code" jdbcType="VARCHAR"/>
+        <result property="staffName" column="staff_name" jdbcType="VARCHAR"/>
+        <result property="checkCode" column="check_code" jdbcType="VARCHAR"/>
+        <result property="checkerName" column="checker_name" jdbcType="VARCHAR"/>
+        <result property="examChainCode" column="exam_chain_code" jdbcType="VARCHAR"/>
+        <result property="examChain" column="exam_chain" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!-- 通过ID查询单条数据 -->
+    <select id="queryById" resultMap="ExamRelMemberMap">
+        select
+            rel_id,staff_code,staff_name,check_code,checker_name,exam_chain_code,exam_chain
+        from workflow.exam_rel_member
+        where rel_id = #{relId}
+    </select>
+
+    <!--分页查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="ExamRelMemberMap">
+        select
+        rel_id,staff_code,staff_name,check_code,checker_name,exam_chain_code,exam_chain
+        from workflow.exam_rel_member
+        <where>
+            <if test="relId != null and relId != ''">
+                and rel_id = #{relId}
+            </if>
+            <if test="staffCode != null and staffCode != ''">
+                and staff_code = #{staffCode}
+            </if>
+            <if test="staffName != null and staffName != ''">
+                and staff_name = #{staffName}
+            </if>
+            <if test="checkCode != null and checkCode != ''">
+                and check_code = #{checkCode}
+            </if>
+            <if test="checkerName != null and checkerName != ''">
+                and checker_name = #{checkerName}
+            </if>
+            <if test="examChainCode != null and examChainCode != ''">
+                and exam_chain_code = #{examChainCode}
+            </if>
+            <if test="examChain != null and examChain != ''">
+                and exam_chain = #{examChain}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from workflow.exam_rel_member
+        <where>
+            <if test="relId != null and relId != ''">
+                and rel_id = #{relId}
+            </if>
+            <if test="staffCode != null and staffCode != ''">
+                and staff_code = #{staffCode}
+            </if>
+            <if test="staffName != null and staffName != ''">
+                and staff_name = #{staffName}
+            </if>
+            <if test="checkCode != null and checkCode != ''">
+                and check_code = #{checkCode}
+            </if>
+            <if test="checkerName != null and checkerName != ''">
+                and checker_name = #{checkerName}
+            </if>
+            <if test="examChainCode != null and examChainCode != ''">
+                and exam_chain_code = #{examChainCode}
+            </if>
+            <if test="examChain != null and examChain != ''">
+                and exam_chain = #{examChain}
+            </if>
+        </where>
+    </select>
+
+    <!--新增数据-->
+    <insert id="insert" keyProperty="rel_id" useGeneratedKeys="true">
+        insert into workflow.exam_rel_member(rel_id,staff_code,staff_name,check_code,checker_name,exam_chain_code,exam_chain)
+        values (#{relId},#{staffCode},#{staffName},#{checkCode},#{checkerName},#{examChainCode},#{examChain})
+    </insert>
+
+    <!-- 批量新增数据 -->
+    <insert id="insertBatch" keyProperty="rel_id" useGeneratedKeys="true">
+        insert into workflow.exam_rel_member(rel_id,staff_code,staff_name,check_code,checker_name,exam_chain_code,exam_chain)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.relId},#{entity.staffCode},#{entity.staffName},#{entity.checkCode},#{entity.checkerName},#{entity.examChainCode},#{entity.examChain})
+        </foreach>
+    </insert>
+
+    <!-- 批量新增或按主键更新数据 -->
+    <insert id="insertOrUpdateBatch" keyProperty="rel_id" useGeneratedKeys="true">
+        insert into workflow.exam_rel_member(rel_id,staff_code,staff_name,check_code,checker_name,exam_chain_code,exam_chain)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.relId},#{entity.staffCode},#{entity.staffName},#{entity.checkCode},#{entity.checkerName},#{entity.examChainCode},#{entity.examChain})
+        </foreach>
+        on duplicate key update
+        rel_id=values(rel_id),
+        staff_code=values(staff_code),
+        staff_name=values(staff_name),
+        check_code=values(check_code),
+        checker_name=values(checker_name),
+        exam_chain_code=values(exam_chain_code),
+        exam_chain=values(exam_chain)
+    </insert>
+
+    <!-- 更新数据 -->
+    <update id="update">
+        update workflow.exam_rel_member
+        <set>
+            <if test="relId != null and relId != ''">
+                rel_id = #{relId},
+            </if>
+            <if test="staffCode != null and staffCode != ''">
+                staff_code = #{staffCode},
+            </if>
+            <if test="staffName != null and staffName != ''">
+                staff_name = #{staffName},
+            </if>
+            <if test="checkCode != null and checkCode != ''">
+                check_code = #{checkCode},
+            </if>
+            <if test="checkerName != null and checkerName != ''">
+                checker_name = #{checkerName},
+            </if>
+            <if test="examChainCode != null and examChainCode != ''">
+                exam_chain_code = #{examChainCode},
+            </if>
+            <if test="examChain != null and examChain != ''">
+                exam_chain = #{examChain},
+            </if>
+        </set>
+        where rel_id = #{relId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from workflow.exam_rel_member where rel_id = #{relId}
+    </delete>
+</mapper>

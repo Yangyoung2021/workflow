@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/processdef">
+  <process id="exam" name="绩效考核" isExecutable="true">
+    <startEvent id="sid-177c1ebd-1902-4096-ad04-64b18f528421" name="考核流程开始"/>
+    <userTask id="sid-26dc64d1-1d00-404e-915b-a7aeef8321fa" name="被考核人填报" activiti:assignee="staff"/>
+    <userTask id="sid-610fa613-5736-4a57-b286-13c5884efeba" name="考核人考核" activiti:assignee="leader"/>
+    <userTask id="sid-8757cabb-1b02-43fc-bdd8-26c632a46889" name="会计审核" activiti:assignee="accounting"/>
+    <endEvent id="sid-1f9e2f3d-d3a8-4fb9-a8b8-1b2ce0076d09" name="考核结束"/>
+    <sequenceFlow id="sid-36b523e7-ed5e-468a-a239-1679f7508dbb" sourceRef="sid-177c1ebd-1902-4096-ad04-64b18f528421" targetRef="sid-26dc64d1-1d00-404e-915b-a7aeef8321fa"/>
+    <sequenceFlow id="sid-cfaa6da1-1086-4e13-94a0-5a1dc57a9cb8" sourceRef="sid-26dc64d1-1d00-404e-915b-a7aeef8321fa" targetRef="sid-610fa613-5736-4a57-b286-13c5884efeba"/>
+    <sequenceFlow id="sid-49d6d817-c93d-4b13-bb63-2d6bec6a1e62" sourceRef="sid-610fa613-5736-4a57-b286-13c5884efeba" targetRef="sid-8757cabb-1b02-43fc-bdd8-26c632a46889"/>
+    <sequenceFlow id="sid-a13e3296-8e05-4504-959b-e9cba4530f59" sourceRef="sid-8757cabb-1b02-43fc-bdd8-26c632a46889" targetRef="sid-1f9e2f3d-d3a8-4fb9-a8b8-1b2ce0076d09"/>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_exam">
+    <bpmndi:BPMNPlane bpmnElement="exam" id="BPMNPlane_exam">
+      <bpmndi:BPMNShape id="shape-0597d73b-0508-4578-a4e5-34af1f54bd6c" bpmnElement="sid-177c1ebd-1902-4096-ad04-64b18f528421">
+        <omgdc:Bounds x="-180.0" y="-19.462866" width="30.0" height="30.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape-77a905cc-8563-41d6-9894-ad246e70dbf6" bpmnElement="sid-26dc64d1-1d00-404e-915b-a7aeef8321fa">
+        <omgdc:Bounds x="-115.0" y="-30.0" width="60.000004" height="50.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape-c1bd650f-1730-4ace-9ed1-7dda999993d3" bpmnElement="sid-610fa613-5736-4a57-b286-13c5884efeba">
+        <omgdc:Bounds x="-15.0" y="-32.5" width="60.000004" height="55.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape-db09e071-6fbc-461e-bc05-958a269f5eb5" bpmnElement="sid-8757cabb-1b02-43fc-bdd8-26c632a46889">
+        <omgdc:Bounds x="80.0" y="-32.5" width="65.0" height="55.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape-83b2af5a-02ac-42af-96bd-ca1a21359a4d" bpmnElement="sid-1f9e2f3d-d3a8-4fb9-a8b8-1b2ce0076d09">
+        <omgdc:Bounds x="185.0" y="-20.0" width="30.0" height="30.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="edge-f79d2f81-7022-4306-a369-d4e0f00197d6" bpmnElement="sid-36b523e7-ed5e-468a-a239-1679f7508dbb">
+        <omgdi:waypoint x="-150.0" y="-4.462866"/>
+        <omgdi:waypoint x="-115.0" y="-5.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge-8d2443cd-f39e-4e32-9ac5-902494007513" bpmnElement="sid-cfaa6da1-1086-4e13-94a0-5a1dc57a9cb8">
+        <omgdi:waypoint x="-55.0" y="-5.0"/>
+        <omgdi:waypoint x="-15.0" y="-5.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge-3d37dd66-84d6-4e02-8629-0d68b0390fa6" bpmnElement="sid-49d6d817-c93d-4b13-bb63-2d6bec6a1e62">
+        <omgdi:waypoint x="45.000004" y="-5.0"/>
+        <omgdi:waypoint x="80.0" y="-5.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge-44cb6812-abe3-47e9-980c-f02822f5f7b0" bpmnElement="sid-a13e3296-8e05-4504-959b-e9cba4530f59">
+        <omgdi:waypoint x="145.0" y="-5.0"/>
+        <omgdi:waypoint x="185.0" y="-5.0"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
