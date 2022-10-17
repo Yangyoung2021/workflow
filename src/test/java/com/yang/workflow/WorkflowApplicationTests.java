@@ -25,7 +25,7 @@ class WorkflowApplicationTests {
         RepositoryService repositoryService = processEngine.getRepositoryService();
         Deployment deploy = repositoryService.createDeployment()
                 .name("考核计划")
-                .addClasspathResource("bpmn/exam.bpmn20.xml")
+                .addClasspathResource("bpmn/exam.bpmn")
                 .addClasspathResource("bpmn/exam.png")
                 .deploy();
         System.out.println(deploy.getId());

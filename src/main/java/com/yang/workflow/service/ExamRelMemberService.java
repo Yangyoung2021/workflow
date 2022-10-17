@@ -18,17 +18,17 @@ public interface ExamRelMemberService{
     /** 
      * 新增数据
      *
-     * @param ExamRelMember 实例对象
+     * @param examRelMember 实例对象
      * @return 实例对象
      */
-    ExamRelMember insert(ExamRelMember ExamRelMember);
+    ExamRelMember insert(ExamRelMember examRelMember);
     /** 
      * 更新数据
      *
-     * @param ExamRelMember 实例对象
+     * @param examRelMember 实例对象
      * @return 实例对象
      */
-    ExamRelMember update(ExamRelMember ExamRelMember);
+    ExamRelMember update(ExamRelMember examRelMember);
     /** 
      * 通过主键删除数据
      *

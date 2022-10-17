@@ -15,7 +15,7 @@
     <description>workflow</description>
     <properties>
         <java.version>1.8</java.version>
-        <activiti.version>7.0.0.Beta1</activiti.version>
+<!--        <activiti.version>7.0.0.Beta1</activiti.version>-->
     </properties>
     <dependencies>
         <dependency>
@@ -47,32 +47,8 @@
         <!-- https://mvnrepository.com/artifact/org.activiti/activiti-spring -->
         <dependency>
             <groupId>org.activiti</groupId>
-            <artifactId>activiti-spring</artifactId>
-            <version>${activiti.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.activiti</groupId>
-            <artifactId>activiti-engine</artifactId>
-            <version>${activiti.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.activiti</groupId>
-            <artifactId>activiti-bpmn-model</artifactId>
-            <version>${activiti.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.activiti.cloud</groupId>
-            <artifactId>activiti-cloud-services-api</artifactId>
-            <version>${activiti.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.activiti</groupId>
-            <artifactId>activiti-bpmn-converter</artifactId>
-            <version>${activiti.version}</version>
+            <artifactId>activiti-spring-boot-starter</artifactId>
+            <version>7.0.0.Beta2</version>
         </dependency>
 
         <dependency>
