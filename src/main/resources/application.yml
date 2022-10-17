@@ -11,7 +11,7 @@ spring:
       matching-strategy: ant_path_matcher
 logging:
   level:
-    root:
+    root: info
 
 
 mybatis:
