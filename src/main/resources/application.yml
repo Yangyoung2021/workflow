@@ -6,7 +6,7 @@ spring:
     username: root
 
   mvc:
-    ## 解决swagger版本和springboot版本冲突的问题
+    ## 解决swagger版本和springBoot版本冲突的问题
     pathmatch:
       matching-strategy: ant_path_matcher
 logging:
