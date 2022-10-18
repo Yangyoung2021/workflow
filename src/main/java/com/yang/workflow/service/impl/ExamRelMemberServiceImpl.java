@@ -14,8 +14,13 @@ import com.yang.workflow.service.ExamRelMemberService;
 public class ExamRelMemberServiceImpl implements ExamRelMemberService{
     @Autowired
     private ExamRelMemberMapper examRelMemberMapper;
-    
-    /** 
+
+     @Override
+     public ExamRelMember queryIdByStaffCode(String staffCode) {
+         return examRelMemberMapper.queryByStaffCode(staffCode);
+     }
+
+     /**
      * 通过ID查询单条数据 
      *
      * @param relId 主键

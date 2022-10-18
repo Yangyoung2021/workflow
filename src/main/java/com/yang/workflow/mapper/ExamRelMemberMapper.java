@@ -61,4 +61,12 @@ public interface ExamRelMemberMapper{
      * @return 影响行数
      */
     int deleteById(String relId);
-}
+
+     /**
+      * 通过ID查询单条数据
+      *
+      * @param staffCode 主键
+      * @return 实例对象
+      */
+     ExamRelMember queryByStaffCode(String staffCode);
+ }

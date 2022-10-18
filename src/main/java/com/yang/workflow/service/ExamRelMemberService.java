@@ -36,4 +36,12 @@ public interface ExamRelMemberService{
      * @return 是否成功
      */
     boolean deleteById(String relId);
-}
+
+     /**
+      * 通过员工编码查询单条数据
+      *
+      * @param staffCode 主键
+      * @return 实例对象
+      */
+     ExamRelMember queryIdByStaffCode(String staffCode);
+ }

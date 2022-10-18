@@ -6,8 +6,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+/**
+ * @author 19816
+ */
 @SpringBootApplication
-@EnableWebMvc
+@EnableSwagger2
 @MapperScan(basePackages = "com.yang.workflow.mapper")
 public class WorkflowApplication {
 

@@ -7,7 +7,7 @@
         <result property="relId" column="rel_id" jdbcType="VARCHAR"/>
         <result property="staffCode" column="staff_code" jdbcType="VARCHAR"/>
         <result property="staffName" column="staff_name" jdbcType="VARCHAR"/>
-        <result property="checkCode" column="check_code" jdbcType="VARCHAR"/>
+        <result property="checkerCode" column="checker_code" jdbcType="VARCHAR"/>
         <result property="checkerName" column="checker_name" jdbcType="VARCHAR"/>
         <result property="examChainCode" column="exam_chain_code" jdbcType="VARCHAR"/>
         <result property="examChain" column="exam_chain" jdbcType="VARCHAR"/>
@@ -16,7 +16,7 @@
     <!-- 通过ID查询单条数据 -->
     <select id="queryById" resultMap="ExamRelMemberMap">
         select
-            rel_id,staff_code,staff_name,check_code,checker_name,exam_chain_code,exam_chain
+            rel_id,staff_code,staff_name,checker_code,checker_name,exam_chain_code,exam_chain
         from workflow.exam_rel_member
         where rel_id = #{relId}
     </select>
@@ -24,7 +24,7 @@
     <!--分页查询指定行数据-->
     <select id="queryAllByLimit" resultMap="ExamRelMemberMap">
         select
-        rel_id,staff_code,staff_name,check_code,checker_name,exam_chain_code,exam_chain
+        rel_id,staff_code,staff_name,checker_code,checker_name,exam_chain_code,exam_chain
         from workflow.exam_rel_member
         <where>
             <if test="relId != null and relId != ''">
@@ -36,8 +36,8 @@
             <if test="staffName != null and staffName != ''">
                 and staff_name = #{staffName}
             </if>
-            <if test="checkCode != null and checkCode != ''">
-                and check_code = #{checkCode}
+            <if test="checkerCode != null and checkerCode != ''">
+                and checker_code = #{checkerCode}
             </if>
             <if test="checkerName != null and checkerName != ''">
                 and checker_name = #{checkerName}
@@ -66,8 +66,8 @@
             <if test="staffName != null and staffName != ''">
                 and staff_name = #{staffName}
             </if>
-            <if test="checkCode != null and checkCode != ''">
-                and check_code = #{checkCode}
+            <if test="checkerCode != null and checkerCode != ''">
+                and checker_code = #{checkerCode}
             </if>
             <if test="checkerName != null and checkerName != ''">
                 and checker_name = #{checkerName}
@@ -81,33 +81,40 @@
         </where>
     </select>
 
+    <select id="queryByStaffCode" resultMap="ExamRelMemberMap">
+        select
+        rel_id,staff_code,staff_name,checker_code,checker_name,exam_chain_code,exam_chain
+        from workflow.exam_rel_member
+        where staff_code = #{staffCode}
+    </select>
+
     <!--新增数据-->
     <insert id="insert" keyProperty="rel_id" useGeneratedKeys="true">
-        insert into workflow.exam_rel_member(rel_id,staff_code,staff_name,check_code,checker_name,exam_chain_code,exam_chain)
-        values (#{relId},#{staffCode},#{staffName},#{checkCode},#{checkerName},#{examChainCode},#{examChain})
+        insert into workflow.exam_rel_member(rel_id,staff_code,staff_name,checker_code,checker_name,exam_chain_code,exam_chain)
+        values (#{relId},#{staffCode},#{staffName},#{checkerCode},#{checkerName},#{examChainCode},#{examChain})
     </insert>
 
     <!-- 批量新增数据 -->
     <insert id="insertBatch" keyProperty="rel_id" useGeneratedKeys="true">
-        insert into workflow.exam_rel_member(rel_id,staff_code,staff_name,check_code,checker_name,exam_chain_code,exam_chain)
+        insert into workflow.exam_rel_member(rel_id,staff_code,staff_name,checker_code,checker_name,exam_chain_code,exam_chain)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.relId},#{entity.staffCode},#{entity.staffName},#{entity.checkCode},#{entity.checkerName},#{entity.examChainCode},#{entity.examChain})
+            (#{entity.relId},#{entity.staffCode},#{entity.staffName},#{entity.checkerCode},#{entity.checkerName},#{entity.examChainCode},#{entity.examChain})
         </foreach>
     </insert>
 
     <!-- 批量新增或按主键更新数据 -->
     <insert id="insertOrUpdateBatch" keyProperty="rel_id" useGeneratedKeys="true">
-        insert into workflow.exam_rel_member(rel_id,staff_code,staff_name,check_code,checker_name,exam_chain_code,exam_chain)
+        insert into workflow.exam_rel_member(rel_id,staff_code,staff_name,checker_code,checker_name,exam_chain_code,exam_chain)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.relId},#{entity.staffCode},#{entity.staffName},#{entity.checkCode},#{entity.checkerName},#{entity.examChainCode},#{entity.examChain})
+            (#{entity.relId},#{entity.staffCode},#{entity.staffName},#{entity.checkerCode},#{entity.checkerName},#{entity.examChainCode},#{entity.examChain})
         </foreach>
         on duplicate key update
         rel_id=values(rel_id),
         staff_code=values(staff_code),
         staff_name=values(staff_name),
-        check_code=values(check_code),
+        checker_code=values(checker_code),
         checker_name=values(checker_name),
         exam_chain_code=values(exam_chain_code),
         exam_chain=values(exam_chain)
@@ -126,8 +133,8 @@
             <if test="staffName != null and staffName != ''">
                 staff_name = #{staffName},
             </if>
-            <if test="checkCode != null and checkCode != ''">
-                check_code = #{checkCode},
+            <if test="checkerCode != null and checkerCode != ''">
+                checker_code = #{checkerCode},
             </if>
             <if test="checkerName != null and checkerName != ''">
                 checker_name = #{checkerName},
