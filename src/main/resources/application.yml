@@ -11,6 +11,18 @@ spring:
       matching-strategy: ant_path_matcher
     servlet:
       path: /v1
+  activiti:
+    database-schema-update: true
+    db-history-used: true
+    history-level: full
+    check-process-definitions: false
+  swagger:
+    production: false
+    basic:
+      enable: true
+      username: admin
+      password: admin
+
 logging:
   level:
     root: info

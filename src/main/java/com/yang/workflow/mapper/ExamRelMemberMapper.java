@@ -22,17 +22,17 @@ public interface ExamRelMemberMapper{
     /** 
      * 统计总行数
      *
-     * @param ExamRelMember 查询条件
+     * @param examRelMember 查询条件
      * @return 总行数
      */
-    long count(ExamRelMember ExamRelMember);
+    long count(ExamRelMember examRelMember);
     /** 
      * 新增数据
      *
-     * @param ExamRelMember 实例对象
+     * @param examRelMember 实例对象
      * @return 影响行数
      */
-    int insert(ExamRelMember ExamRelMember);
+    int insert(ExamRelMember examRelMember);
     /** 
      * 批量新增数据
      *
@@ -50,10 +50,10 @@ public interface ExamRelMemberMapper{
     /** 
      * 更新数据
      *
-     * @param ExamRelMember 实例对象
+     * @param examRelMember 实例对象
      * @return 影响行数
      */
-    int update(ExamRelMember ExamRelMember);
+    int update(ExamRelMember examRelMember);
     /** 
      * 通过主键删除数据
      *
@@ -61,4 +61,12 @@ public interface ExamRelMemberMapper{
      * @return 影响行数
      */
     int deleteById(String relId);
-}
+
+     /**
+      * 通过ID查询单条数据
+      *
+      * @param staffCode 主键
+      * @return 实例对象
+      */
+     ExamRelMember queryByStaffCode(String staffCode);
+ }

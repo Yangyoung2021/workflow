@@ -36,25 +36,25 @@ public class ExamRelMemberController {
     /** 
      * 新增数据
      *
-     * @param ExamRelMember 实例对象
+     * @param examRelMember 实例对象
      * @return 实例对象
      */
     @ApiOperation("新增数据")
     @PostMapping
-    public ResponseEntity<ExamRelMember> add(ExamRelMember ExamRelMember){
-        return ResponseEntity.ok(examRelMemberService.insert(ExamRelMember));
+    public ResponseEntity<ExamRelMember> add(ExamRelMember examRelMember){
+        return ResponseEntity.ok(examRelMemberService.insert(examRelMember));
     }
     
     /** 
      * 更新数据
      *
-     * @param ExamRelMember 实例对象
+     * @param examRelMember 实例对象
      * @return 实例对象
      */
     @ApiOperation("更新数据")
     @PutMapping
-    public ResponseEntity<ExamRelMember> edit(ExamRelMember ExamRelMember){
-        return ResponseEntity.ok(examRelMemberService.update(ExamRelMember));
+    public ResponseEntity<ExamRelMember> edit(ExamRelMember examRelMember){
+        return ResponseEntity.ok(examRelMemberService.update(examRelMember));
     }
     
     /** 

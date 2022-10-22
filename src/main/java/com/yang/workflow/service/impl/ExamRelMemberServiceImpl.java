@@ -14,13 +14,19 @@ import com.yang.workflow.service.ExamRelMemberService;
 public class ExamRelMemberServiceImpl implements ExamRelMemberService{
     @Autowired
     private ExamRelMemberMapper examRelMemberMapper;
-    
-    /** 
+
+     @Override
+     public ExamRelMember queryIdByStaffCode(String staffCode) {
+         return examRelMemberMapper.queryByStaffCode(staffCode);
+     }
+
+     /**
      * 通过ID查询单条数据 
      *
      * @param relId 主键
      * @return 实例对象
      */
+    @Override
     public ExamRelMember queryById(String relId){
         return examRelMemberMapper.queryById(relId);
     }
@@ -28,23 +34,25 @@ public class ExamRelMemberServiceImpl implements ExamRelMemberService{
     /** 
      * 新增数据
      *
-     * @param ExamRelMember 实例对象
+     * @param examRelMember 实例对象
      * @return 实例对象
      */
-    public ExamRelMember insert(ExamRelMember ExamRelMember){
-        examRelMemberMapper.insert(ExamRelMember);
-        return ExamRelMember;
+    @Override
+    public ExamRelMember insert(ExamRelMember examRelMember){
+        examRelMemberMapper.insert(examRelMember);
+        return examRelMember;
     }
     
     /** 
      * 更新数据
      *
-     * @param ExamRelMember 实例对象
+     * @param examRelMember 实例对象
      * @return 实例对象
      */
-    public ExamRelMember update(ExamRelMember ExamRelMember){
-        examRelMemberMapper.update(ExamRelMember);
-        return queryById(ExamRelMember.getRelId());
+    @Override
+    public ExamRelMember update(ExamRelMember examRelMember){
+        examRelMemberMapper.update(examRelMember);
+        return queryById(examRelMember.getRelId());
     }
     
     /** 
@@ -53,6 +61,7 @@ public class ExamRelMemberServiceImpl implements ExamRelMemberService{
      * @param relId 主键
      * @return 是否成功
      */
+    @Override
     public boolean deleteById(String relId){
         int total = examRelMemberMapper.deleteById(relId);
         return total > 0;

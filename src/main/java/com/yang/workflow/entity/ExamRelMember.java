@@ -3,9 +3,8 @@ package com.yang.workflow.entity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
-import java.util.Date;
 
- /**
+/**
  * 考核关系表;
  * @author : http://www.chiner.pro
  * @date : 2022-10-16
@@ -23,7 +22,7 @@ public class ExamRelMember implements Serializable {
     private String staffName ;
     /**  */
     @ApiModelProperty(name = "",notes = "null")
-    private String checkCode ;
+    private String checkerCode;
     /**  */
     @ApiModelProperty(name = "",notes = "null")
     private String checkerName ;
@@ -33,8 +32,19 @@ public class ExamRelMember implements Serializable {
     /**  */
     @ApiModelProperty(name = "",notes = "null")
     private String examChain ;
+     /**  */
+     @ApiModelProperty(name = "",notes = "null")
+     private String accounting ;
 
-    /**  */
+     public String getAccounting() {
+         return accounting;
+     }
+
+     public void setAccounting(String accounting) {
+         this.accounting = accounting;
+     }
+
+     /**  */
     public String getRelId(){
         return this.relId;
     }
@@ -59,12 +69,12 @@ public class ExamRelMember implements Serializable {
         this.staffName=staffName;
     }
     /**  */
-    public String getCheckCode(){
-        return this.checkCode;
+    public String getCheckerCode(){
+        return this.checkerCode;
     }
     /**  */
-    public void setCheckCode(String checkCode){
-        this.checkCode=checkCode;
+    public void setCheckerCode(String checkerCode){
+        this.checkerCode = checkerCode;
     }
     /**  */
     public String getCheckerName(){
